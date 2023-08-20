@@ -47,7 +47,7 @@ int main()
     
     for(int i(0); i < 15; i++)
     {
-        end->ELEMENT.element = rand();
+        end->ELEMENT.element = rand() % 15 + 1;
         end->next = new LIST;
         end = end->next;
     }
