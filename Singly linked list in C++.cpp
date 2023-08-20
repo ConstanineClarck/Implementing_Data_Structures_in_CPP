@@ -22,6 +22,8 @@ struct LIST
     LIST *next;
 };
 
+void INIT_LIST(LIST **begin);
+
 void PRINT(LIST *ptr);
 
 
@@ -38,25 +40,30 @@ int main()
     
     
     LIST *begin = NULL;
-    begin = new LIST;
-    begin->ELEMENT.element = 0;
+    
+    INIT_LIST(&begin);
+    PRINT(begin);
+    
+    
+
+    return 0;
+}
+
+void INIT_LIST(LIST **begin)
+{
+    (*begin) = new LIST;
+    (*begin)->ELEMENT.element = 0;
     LIST *end = new LIST;
-    end = begin;
-    int diapazon = 35 - 10;
+    end = *begin;
     
     for(int i(0); i < 5; i++)
     {
         end->next = new LIST;
         end = end->next;
         end->ELEMENT.element = rand() % 15;
+        end->next = NULL;
     }
     
-    
-    PRINT(begin);
-    
-    
-
-    return 0;
 }
 
 void PRINT(LIST *ptr)
