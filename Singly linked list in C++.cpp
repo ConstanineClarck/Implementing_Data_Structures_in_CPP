@@ -40,19 +40,21 @@ int main()
     LIST *begin = NULL;
     begin = new LIST;
     begin->ELEMENT.element = 0;
-    begin->next = new LIST;
     LIST *end = new LIST;
-    end = begin->next;
+    end = begin;
+    int diapazon = 35 - 10;
     
-    
-    for(int i(0); i < 15; i++)
+    for(int i(0); i < 5; i++)
     {
-        end->ELEMENT.element = rand() % 15 + 1;
         end->next = new LIST;
         end = end->next;
+        end->ELEMENT.element = rand() % 15;
     }
     
+    
     PRINT(begin);
+    
+    
 
     return 0;
 }
@@ -60,10 +62,13 @@ int main()
 void PRINT(LIST *ptr)
 {
     LIST *PTR = ptr;
-    while(PTR)
+    int a(0);
+    
+    do
     {
-        int a = PTR->ELEMENT.element;
+        a = PTR->ELEMENT.element;
         cout << a << " -> next" << endl;
         PTR = PTR->next;
-    }
+        
+    }while(a <= 15);
 }
