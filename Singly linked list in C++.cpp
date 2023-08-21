@@ -1,11 +1,11 @@
 /******************************************************************************
 
-Односвязный список 
+Односвязный список
 
 
 *******************************************************************************/
 #include <iostream>
-//#include <conio.h>
+#include <conio.h>
 #include <time.h>
 //#include <random>
 
@@ -27,6 +27,11 @@ void INIT_LIST(LIST **begin);
 void PRINT(LIST *ptr);
 
 void ADD_in_BEGIN(LIST **begin);
+
+void ADD_in_AND(LIST **begin);
+
+void SORT_LISTS_from_smallest_to_largest(LIST **begin);
+    
 
 int main()
 {
@@ -54,7 +59,8 @@ int main()
 void INIT_LIST(LIST **begin)
 {
     (*begin) = new LIST;
-    (*begin)->ELEMENT.element = 0;
+    (*begin)->ELEMENT.element = 1;
+    (*begin)->next = NULL;
     LIST *end = new LIST;
     end = *begin;
     
@@ -68,24 +74,70 @@ void INIT_LIST(LIST **begin)
     
 }
 
+void ADD_in_BEGIN(LIST **begin)
+{
+    LIST *T = new LIST;
+    T->ELEMENT.element = rand() % 15 + 1;
+    
+    if(*begin == NULL)
+    {
+        T->next = NULL;
+        *begin = T;
+        return;
+    }
+    
+    
+    
+    T->next = *begin;
+    *begin = T;
+}
+
+void SORT_LISTS_from_smallest_to_largest(LIST **begin)
+{
+    LIST *ins1 = new LIST;
+    LIST *ins2 = new LIST;
+    
+    ins1 = begin;
+    ins2 = begin->next;
+    
+    for(int i(0); i < 5; i++)
+    {
+        if((*ins1)->ELEMENT.element > (*ins2)->ELEMENT).element)
+        {
+            //swap(ins1, ins2);
+        }
+        ins1 = ins2;
+        ins2 = ins2->next;
+    }
+
+void ADD_in_AND(LIST **begin)
+{
+    LIST *end = new LIST;
+    end = *begin;
+    for(int i(0); i <5; i++)
+    {
+        
+        end = end->next;
+        
+    }
+    LIST *T = new LIST;
+    T->ELEMENT.element = rand() % 15 = 1;
+    T->next = NULL;
+    end->next = T;
+    
+}
+
 void PRINT(LIST *ptr)
 {
     LIST *PTR = ptr;
     int a(0);
     
-    do
+    while(PTR)
     {
         a = PTR->ELEMENT.element;
         cout << a << " -> next" << endl;
         PTR = PTR->next;
         
-    }while(a <= 15);
+    }
 }
-
-void ADD_in_BEGIN(LIST **begin)
-{
-    LIST *T = new LIST;
-    T->ELEMENT.element = rand() % 15 + 1;
-    T->next = *begin;
-    *begin = T;
 }
