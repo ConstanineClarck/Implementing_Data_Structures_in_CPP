@@ -5,7 +5,7 @@
 
 *******************************************************************************/
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 #include <time.h>
 //#include <random>
 
@@ -26,6 +26,7 @@ void INIT_LIST(LIST **begin);
 
 void PRINT(LIST *ptr);
 
+void ADD_in_BEGIN(LIST **begin);
 
 int main()
 {
@@ -42,6 +43,7 @@ int main()
     LIST *begin = NULL;
     
     INIT_LIST(&begin);
+    ADD_in_BEGIN(&begin);
     PRINT(begin);
     
     
@@ -78,4 +80,12 @@ void PRINT(LIST *ptr)
         PTR = PTR->next;
         
     }while(a <= 15);
+}
+
+void ADD_in_BEGIN(LIST **begin)
+{
+    LIST *T = new LIST;
+    T->ELEMENT.element = rand() % 15 + 1;
+    T->next = *begin;
+    *begin = T;
 }
