@@ -31,6 +31,8 @@ void ADD_in_BEGIN(LIST **begin);
 void ADD_in_AND(LIST **begin);
 
 void SORT_LISTS_from_smallest_to_largest(LIST **begin);
+
+void DELETE(LIST **begin);
     
 
 int main()
@@ -140,4 +142,21 @@ void PRINT(LIST *ptr)
         
     }
 }
+
+void DELETE(LIST **begin)
+{
+    if(begin == NULL)
+    {
+        return;
+    }
+    
+    while(begin != NULL);
+    {
+        LIST *t = new LIST;
+        t = *begin;
+        begin = begin->next;
+        delete t;
+    }
+    delete *begin;
+    
 }
